@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Read(//tmp/**)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git add *)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:5173)",
+      "mcp__Claude_Preview__preview_start",
+      "Read(//Users/maanasagadey/Documents/Tend/**)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('has key:', bool\\(d.get\\('apiKey', ''\\)\\)\\)\")",
+      "Bash(pkill -f \"vite --port\")",
+      "Bash(curl -s -X POST http://localhost:5175/api/generate -H 'Content-Type: application/json' -d '{\"diagnosis\":\"Type 2 diabetes\",\"location\":\"San Francisco, CA\"}')",
+      "Bash(brew install *)",
+      "Bash(gh --version)",
+      "Bash(vercel --version)",
+      "Bash(gh auth *)",
+      "Bash(vercel --yes)",
+      "Bash(vercel --yes --name tend-app)",
+      "Bash(git commit -m 'Fix TypeScript types in Vercel API function *)",
+      "Bash(vercel env *)",
+      "Bash(vercel --prod)",
+      "Bash(vercel ls *)",
+      "Bash(curl -s http://localhost:5174/ -o /dev/null -w \"%{http_code}\")",
+      "Bash(pkill -f vite)",
+      "Bash(curl -s http://localhost:5174/ -o /dev/null -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -s https://tend-app-one.vercel.app/)",
+      "Bash(curl -s https://tend-app-one.vercel.app/assets/index-BJkLyYWI.css)",
+      "Bash(git commit -m 'Update README with personal story and AI features *)",
+      "Bash(git commit -m 'Rephrase README intro, remove product name reference *)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' -X POST https://api.openai.com/v1/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer __CMDSUB_OUTPUT__')"
+    ]
+  }
+}

@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Inter+Tight:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  color-scheme: light;
+  font-size: 16px;
+}
+
+html,
+body,
+#root {
+  background-color: #f7f3ec;
+  color: #1a1814;
+  min-height: 100%;
+}
+
+body {
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-weight: 400;
+}
+
+p, li, label, span, input, textarea, button {
+  font-weight: 400;
+}
+
+/* ─── Display font ─────────────────────────────── */
+
+.font-display {
+  font-family: "Fraunces", Georgia, serif;
+  font-variation-settings: "SOFT" 30, "opsz" 96;
+}
+
+/* ─── Grain overlay ────────────────────────────── */
+
+.grain {
+  position: relative;
+}
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.025 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.7;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+/* ─── Animations ───────────────────────────────── */
+
+.route-fade {
+  animation: fade 380ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+@keyframes fade {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stagger > * {
+  opacity: 0;
+  animation: rise 540ms cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+}
+.stagger > *:nth-child(1) { animation-delay: 60ms; }
+.stagger > *:nth-child(2) { animation-delay: 150ms; }
+.stagger > *:nth-child(3) { animation-delay: 240ms; }
+.stagger > *:nth-child(4) { animation-delay: 330ms; }
+.stagger > *:nth-child(5) { animation-delay: 420ms; }
+.stagger > *:nth-child(6) { animation-delay: 510ms; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Skeleton loader ──────────────────────────── */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #ede8de 0%,
+    #f5f0e8 40%,
+    #f5f0e8 60%,
+    #ede8de 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ─── Loading screen ───────────────────────────── */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #f7f3ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade 300ms ease both;
+}
+
+.loading-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+}
+.loading-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a86f2c;
+  animation: dot-pulse 1.4s ease-in-out infinite;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.22s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.44s; }
+
+@keyframes dot-pulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.75); }
+  40%           { opacity: 1;   transform: scale(1); }
+}
+
+/* ─── Decorative rule ──────────────────────────── */
+
+.rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e0d8c8 20%, #e0d8c8 80%, transparent);
+}
+
+/* ─── Form inputs ──────────────────────────────── */
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd6c5;
+  padding: 13px 0;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: #1a1814;
+  font-family: inherit;
+  transition: border-color 200ms ease;
+}
+.input:focus {
+  outline: none;
+  border-bottom-color: #a86f2c;
+}
+.input::placeholder {
+  color: #9a907e;
+  font-weight: 400;
+}
+
+.input.pl-6 {
+  padding-left: 1.5rem;
+}
+
+textarea.input {
+  border: 1px solid #ddd6c5;
+  border-radius: 6px;
+  padding: 14px 16px;
+  resize: vertical;
+  min-height: 96px;
+  line-height: 1.65;
+}
+textarea.input:focus {
+  border-color: #a86f2c;
+}
+
+/* ─── Buttons ──────────────────────────────────── */
+
+.btn-primary {
+  background: #1a1814;
+  color: #f7f3ec;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: transform 180ms ease, background 200ms ease, opacity 200ms ease;
+  cursor: pointer;
+}
+.btn-primary:hover:not(:disabled) {
+  background: #2e2923;
+  transform: translateY(-1px);
+}
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+.btn-primary:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  color: #3a352d;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: background 200ms ease;
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  background: #efe9de;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #1a1814;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(26, 24, 20, 0.5);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 180ms ease;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: #1a1814;
+  color: #f7f3ec;
+  border-color: #1a1814;
+  transform: translateY(-1px);
+}
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* ─── Cards ────────────────────────────────────── */
+
+.card {
+  background: #fffdf8;
+  border: 1px solid #e4ddd0;
+  border-radius: 10px;
+  padding: 28px 28px 24px;
+  box-shadow:
+    0 1px 2px rgba(26, 24, 20, 0.04),
+    0 4px 20px rgba(26, 24, 20, 0.03);
+  transition: box-shadow 200ms ease;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 22px 20px 20px;
+    border-radius: 8px;
+  }
+}
+
+/* ─── Numeric / label style ────────────────────── */
+
+.num {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  color: #a86f2c;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
